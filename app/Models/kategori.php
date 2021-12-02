@@ -11,4 +11,13 @@ class kategori extends Model
     protected $fillable = ['nama_kategori, fungsi, id_sifat, jumlah'];
 
     use HasFactory;
+
+    public function sifat()
+    {
+        return $this->hasone('App\Models\sifat');
+    }
+
+    public function barang(){
+        return $this->belongsTo('App\Models\barang');
+    }
 }
