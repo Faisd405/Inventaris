@@ -18,13 +18,13 @@ class CreateBarangTable extends Migration
             $table->string('kode_barang');
             $table->string('nama_barang');
             $table->string('detail_barang');
-            $table->unsignedBigInteger('id_kategori');
-            $table->foreign('id_kategori')->references('id')->on('kategori');
+            $table->unsignedBigInteger('kategori_id');
+            $table->foreign('kategori_id')->references('id')->on('kategori');
             $table->string('fungsi');
             $table->integer('harga_barang');
             $table->string('lokasi');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

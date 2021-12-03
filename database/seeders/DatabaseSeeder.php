@@ -63,8 +63,8 @@ class DatabaseSeeder extends Seeder
             'fungsi' => 'Mengoding',
             'harga_barang' => '1000000',
             'lokasi' => 'Gedung A',
-            'id_kategori' => '1',
-            'id_user' => '1',
+            'kategori_id' => '1',
+            'user_id' => '1',
         ]);
 
         barang::create([
@@ -74,8 +74,19 @@ class DatabaseSeeder extends Seeder
             'fungsi' => 'dipake',
             'harga_barang' => '1000000',
             'lokasi' => 'Gedung A',
-            'id_kategori' => '2',
-            'id_user' => '2',
+            'kategori_id' => '2',
+            'user_id' => '2',
+        ]);
+
+        barang::create([
+            'nama_barang' => 'Kursi',
+            'kode_barang' => 'Kurs-001',
+            'detail_barang' => 'Kursi',
+            'fungsi' => 'dipake',
+            'harga_barang' => '500000',
+            'lokasi' => 'Gedung A',
+            'kategori_id' => '2',
+            'user_id' => '1',
         ]);
 
         // Seeder Buku
