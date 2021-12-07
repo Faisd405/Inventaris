@@ -12,7 +12,7 @@
               >TAMBAH Data User</router-link
             >
             <router-link
-              :to="{ name: '/#' }"
+              :to="{ name: 'relasiuserbarang' }"
               class="btn btn-md btn-primary"
               >TAMBAH Data Barang ke User</router-link
             >

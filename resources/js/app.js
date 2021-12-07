@@ -8,6 +8,8 @@ Vue.use(VueRouter);
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 
+import VueBarcode from 'vue-barcode';
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue';
 
@@ -20,7 +22,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios,VueBarcode);
 
 // Home
 import Home from './components/Home.vue';
@@ -28,10 +30,12 @@ import Home from './components/Home.vue';
 import IndexUsers from './components/Users/Index.vue';
 import DetailUsers from './components/Users/Detail.vue';
 import CreateUsers from './components/Users/Create.vue';
+import RelasiUsersKeBarang from './components/Users/relasi-barang.vue';
 
 //Component Barang (Data Barang)
 import IndexBarang from './components/Barang/Index.vue';
 import CreateBarang from './components/Barang/Create.vue';
+import EditBarang from './components/Barang/Edit.vue';
 
 // Routes Untuk Component User
 const routes = [
@@ -54,6 +58,11 @@ const routes = [
         component: CreateUsers
     },
     {
+        name: 'relasiuserbarang',
+        path: '/users/relasi',
+        component: RelasiUsersKeBarang
+    },
+    {
         name: 'detail-users',
         path: '/users/:id',
         component: DetailUsers
@@ -68,7 +77,12 @@ const routes = [
         name: 'create-barang',
         path: '/barang/create',
         component: CreateBarang
-    }
+    },
+    {
+        name: 'edit-barang',
+        path: '/barang/:id',
+        component: EditBarang
+    },
 
 ]
 

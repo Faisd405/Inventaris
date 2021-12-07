@@ -12,7 +12,12 @@
               >TAMBAH Data Barang</router-link
             >
             <div class="table-responsive mt-2">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <table
+                class="table table-bordered"
+                id="dataTable"
+                width="100%"
+                cellspacing="0"
+              >
                 <thead>
                   <tr>
                     <th>Kode Barang</th>
@@ -25,6 +30,18 @@
                     <th>Aksi</th>
                   </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>Kode Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Detail Barang</th>
+                        <th>Kategori</th>
+                        <th>Fungsi</th>
+                        <th>Harga</th>
+                        <th>Lokasi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
                 <tbody>
                   <tr v-for="barang in barang" :key="barang.id">
                     <td>{{ barang.kode_barang }}</td>
@@ -38,7 +55,7 @@
                     <td>{{ barang.lokasi }}</td>
                     <td>
                       <router-link
-                        :to="{ name: 'edit-users', params: { id: barang.id } }"
+                        :to="{ name: 'edit-barang', params: { id: barang.id } }"
                         class="btn btn-sm btn-primary"
                         >Edit</router-link
                       >
@@ -74,5 +91,13 @@ export default {
       this.barang = response.data.barang;
     });
   },
+  methods: {
+    destroy(id) {
+      let uri = `/api/barang/${id}`;
+        this.axios.delete(uri).then((response) => {
+            this.barang = this.barang.filter((barang) => barang.id != id);
+        });
+    },
+    },
 };
 </script>
