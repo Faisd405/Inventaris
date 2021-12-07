@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class kategori extends Model
 {
     protected $table = 'kategori';
-    protected $fillable = ['nama_kategori, fungsi, id_sifat, jumlah'];
+    protected $fillable = ['nama_kategori, fungsi, sifat_id, jumlah'];
 
     use HasFactory;
 

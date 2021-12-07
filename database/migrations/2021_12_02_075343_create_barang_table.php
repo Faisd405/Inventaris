@@ -23,7 +23,7 @@ class CreateBarangTable extends Migration
             $table->string('fungsi');
             $table->integer('harga_barang');
             $table->string('lokasi');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

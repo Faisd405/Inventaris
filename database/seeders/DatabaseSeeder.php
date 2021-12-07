@@ -45,14 +45,14 @@ class DatabaseSeeder extends Seeder
             'nama_kategori' => 'PC',
             'jumlah' => '1',
             'fungsi' => 'Mengoding',
-            'id_sifat' => '1',
+            'sifat_id' => '1',
         ]);
 
         kategori::create([
             'nama_kategori' => 'Furniture',
             'jumlah' => '1',
             'fungsi' => 'dipake',
-            'id_sifat' => '2',
+            'sifat_id' => '2',
         ]);
 
         // Seeder Barang
@@ -87,6 +87,17 @@ class DatabaseSeeder extends Seeder
             'lokasi' => 'Gedung A',
             'kategori_id' => '2',
             'user_id' => '1',
+        ]);
+
+        barang::create([
+            'nama_barang' => 'VGA',
+            'kode_barang' => 'VGA-001',
+            'detail_barang' => 'Kursi',
+            'fungsi' => 'ngegame',
+            'harga_barang' => '200000',
+            'lokasi' => 'Gedung A',
+            'kategori_id' => '1',
+            'user_id' => null,
         ]);
 
         // Seeder Buku

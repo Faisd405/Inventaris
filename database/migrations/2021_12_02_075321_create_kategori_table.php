@@ -17,8 +17,8 @@ class CreateKategoriTable extends Migration
             $table->id();
             $table->string('nama_kategori');
             $table->string('fungsi');
-            $table->unsignedBigInteger('id_sifat');
-            $table->foreign('id_sifat')->references('id')->on('sifat');
+            $table->unsignedBigInteger('sifat_id');
+            $table->foreign('sifat_id')->references('id')->on('sifat');
             $table->integer('jumlah');
             $table->timestamps();
         });

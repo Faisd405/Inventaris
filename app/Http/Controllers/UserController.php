@@ -14,10 +14,31 @@ class UserController extends Controller
         $users = User::latest()->get();
         return response([
             'success' => true,
-            'message' => 'List Semua Murid',
+            'message' => 'List Semua User',
             'data' => $users
         ], 200);
     }
+
+    // public function create(){
+    //     $users = User::all();
+    //     $barangs = barang::all();
+
+    //     // if users and barangs
+    //     if ($users && $barangs) {
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Barang dan User!',
+    //             'barang'    => $barangs,
+    //             'user' => $users
+    //         ], 200);
+    //     } else {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'barangs Tidak Ditemukan!',
+    //             'data'    => ''
+    //         ], 404);
+    //     }
+    // }
 
 
     public function show($id)
@@ -25,11 +46,11 @@ class UserController extends Controller
         $users = User::find($id);
         $barangs = barang::where('user_id', $id)->get();
 
-        if ($barangs) {
+        if ($barangs && $users) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail barang barangs!',
-                'data'    => $barangs,
+                'message' => 'Barang dan User!',
+                'barang'    => $barangs,
                 'user' => $users
             ], 200);
         } else {
@@ -39,5 +60,15 @@ class UserController extends Controller
                 'data'    => ''
             ], 404);
         }
+    }
+
+    public function store(Request $request)
+    {
+        $users = User::create($request->all());
+        return response()->json([
+            'success' => true,
+            'message' => 'User Berhasil Ditambahkan!',
+            'data'    => $users
+        ], 200);
     }
 }

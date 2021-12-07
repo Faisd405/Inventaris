@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +25,8 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+Route::get('/barang', [BarangController::class, 'index']);
+Route::get('/barang/create', [BarangController::class, 'create']);
+
+Route::get('/kategori', [KategoriController::class, 'index']);

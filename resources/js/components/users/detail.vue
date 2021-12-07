@@ -50,7 +50,7 @@ export default {
   created() {
     let uri = `/api/users/${this.$route.params.id}`;
     this.axios.get(uri).then((response) => {
-      this.barangs = response.data.data;
+      this.barangs = response.data.barang;
       this.users = response.data.user;
     });
   },
