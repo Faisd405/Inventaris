@@ -15,7 +15,7 @@ class UserController extends Controller
         return response([
             'success' => true,
             'message' => 'List Semua User',
-            'data' => $users
+            'user' => $users
         ], 200);
     }
 

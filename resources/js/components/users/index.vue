@@ -26,7 +26,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="user in users" :key="user.id">
+                  <tr v-for="user in user" :key="user.id">
                     <td>{{ user.name }}</td>
                     <td>{{ user.roles }}</td>
                     <td>
@@ -52,13 +52,13 @@
 export default {
   data() {
     return {
-      users: [],
+      user: [],
     };
   },
   created() {
     let uri = `/api/users`;
     this.axios.get(uri).then((response) => {
-      this.users = response.data.data;
+      this.user = response.data.user;
     });
   },
 };

@@ -11,9 +11,14 @@
               class="btn btn-md btn-primary"
               >TAMBAH Data Barang</router-link
             >
+            <a href="/barang/barang_pdf" class="btn btn-md btn-primary" target="_blank"
+              >Cetak PDF Barang</a>
+            <router-link :to="{ name: 'scanqr-barang' }" class="btn btn-md btn-primary"
+              >Scan QRCode Barang</router-link
+            >
             <div class="table-responsive mt-2">
               <table
-                class="table table-bordered"
+                class="table table-striped"
                 id="dataTable"
                 width="100%"
                 cellspacing="0"
@@ -27,20 +32,22 @@
                     <th>Fungsi</th>
                     <th>Harga</th>
                     <th>Lokasi</th>
+                    <th>Pemakai</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tfoot>
-                    <tr>
-                        <th>Kode Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Detail Barang</th>
-                        <th>Kategori</th>
-                        <th>Fungsi</th>
-                        <th>Harga</th>
-                        <th>Lokasi</th>
-                        <th>Aksi</th>
-                    </tr>
+                  <tr>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Detail Barang</th>
+                    <th>Kategori</th>
+                    <th>Fungsi</th>
+                    <th>Harga</th>
+                    <th>Lokasi</th>
+                    <th>Pemakai</th>
+                    <th>Aksi</th>
+                  </tr>
                 </tfoot>
                 <tbody>
                   <tr v-for="barang in barang" :key="barang.id">
@@ -53,11 +60,20 @@
                     <td>{{ barang.fungsi }}</td>
                     <td>{{ barang.harga_barang }}</td>
                     <td>{{ barang.lokasi }}</td>
+                    <td>{{ barang.user.name }}</td>
                     <td>
                       <router-link
                         :to="{ name: 'edit-barang', params: { id: barang.id } }"
                         class="btn btn-sm btn-primary"
                         >Edit</router-link
+                      >
+                      <router-link
+                        :to="{
+                          name: 'detail-barang',
+                          params: { id: barang.id },
+                        }"
+                        class="btn btn-sm btn-primary"
+                        >Detail</router-link
                       >
                       <button
                         class="btn btn-sm btn-danger"
@@ -78,11 +94,21 @@
 </template>
 
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+
 <script>
 export default {
   data() {
     return {
-      barang: [],
+      barang: {
+        user: {},
+        kategori: {},
+      },
+      kategori: [],
+        user: [],
     };
   },
   created() {
@@ -94,10 +120,10 @@ export default {
   methods: {
     destroy(id) {
       let uri = `/api/barang/${id}`;
-        this.axios.delete(uri).then((response) => {
-            this.barang = this.barang.filter((barang) => barang.id != id);
-        });
+      this.axios.delete(uri).then((response) => {
+        this.barang = this.barang.filter((barang) => barang.id != id);
+      });
     },
-    },
+  },
 };
 </script>

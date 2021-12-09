@@ -3,20 +3,20 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card card-default">
-          <div class="card-header">Create User</div>
+          <div class="card-header">Relasi Barang Dan User</div>
 
           <div class="card-body">
             <form @submit.prevent="RelasiUserBarangUpdate">
               <!-- select user -->
               <div class="form-group">
-                <label for="user_id">User</label>
+                <label for="user_id">Pengguna</label>
                 <select
                   name="user_id"
                   class="form-control"
                   v-model="barang.user_id"
                 >
                   <option value="" disabled>Pilih User</option>
-                  <option v-for="user in users" :key="user.id">
+                  <option v-for="user in user" :key="user.id" :value="user.id">
                     {{ user.name }}
                   </option>
                 </select>
@@ -31,12 +31,13 @@
                 >
                   <option value="" disabled>Pilih Barang</option>
                   <option
-                    v-for="barang in barang"
+                    v-for="barang in barangs"
                     :value="barang.id"
                     :key="barang.id"
                   >
                     {{ barang.nama_barang }}
                   </option>
+                  <option disabled v-if="!barang">Tidak Ada Barang Baru</option>
                 </select>
               </div>
               <div class="form-group">
@@ -56,28 +57,31 @@
 export default {
   data() {
     return {
-      users: [],
-      barang: [],
+      user: [],
+      barang: {},
+      barangs: {},
     };
   },
   created() {
     axios.get("/api/users/").then((response) => {
-      this.users = response.data.data;
+      this.user = response.data.user;
     });
     axios.get("/api/barang/NoUser").then((response) => {
-      this.barang = response.data.barang;
+      this.barangs = response.data.barang;
     });
   },
   methods: {
-    UserStore() {
-      axios
-        .post("/api/users", this.users)
-        .then((response) => {
-          this.$router.push("/users");
-        })
-        .catch((error) => {
-          console.log(error.response.data.errors);
-        });
+    RelasiUserBarangUpdate() {
+      let uri = "/api/barang/" + this.barang.id;
+        axios
+            .put(uri, this.barang)
+            .then((response) => {
+                toastr.success("Data Berhasil Diubah");
+                this.$router.push("/barang");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     },
   },
 };

@@ -8,21 +8,21 @@ Vue.use(VueRouter);
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 
-import VueBarcode from 'vue-barcode';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue';
+
+library.add(faUserSecret)
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
 
-Vue.use(VueAxios, axios,VueBarcode);
+Vue.use(VueAxios, axios,IconsPlugin,BootstrapVue, FontAwesomeIcon);
 
 // Home
 import Home from './components/Home.vue';
@@ -36,6 +36,13 @@ import RelasiUsersKeBarang from './components/Users/relasi-barang.vue';
 import IndexBarang from './components/Barang/Index.vue';
 import CreateBarang from './components/Barang/Create.vue';
 import EditBarang from './components/Barang/Edit.vue';
+import DetailBarang from './components/Barang/Detail.vue';
+import ScanQrBarang from './components/Barang/ScanQr.vue';
+
+//Component Buku (Data Buku)
+import IndexBuku from './components/Buku/Index.vue';
+import CreateBuku from './components/Buku/Create.vue';
+import EditBuku from './components/Buku/Edit.vue';
 
 // Routes Untuk Component User
 const routes = [
@@ -80,10 +87,35 @@ const routes = [
     },
     {
         name: 'edit-barang',
-        path: '/barang/:id',
+        path: '/barang/:id/edit',
         component: EditBarang
     },
-
+    {
+        name: 'scanqr-barang',
+        path: '/users/scanqr',
+        component: ScanQrBarang
+    },
+    {
+        name: 'detail-barang',
+        path: '/barang/:id',
+        component: DetailBarang
+    },
+    // Route Untuk Buku
+    {
+        name: 'index-buku',
+        path: '/buku',
+        component: IndexBuku
+    },
+    {
+        name: 'create-buku',
+        path: '/buku/create',
+        component: CreateBuku
+    },
+    {
+        name: 'edit-buku',
+        path: '/buku/:id/edit',
+        component: EditBuku
+    },
 ]
 
 const router = new VueRouter({

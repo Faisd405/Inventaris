@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\BukuController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,7 +30,7 @@ Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
 //Route API Barang
 Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/barang/NoUser', [BarangController::class, 'indexNoUser']);
+Route::get('/barang/NoUser', [BarangController::class, 'indexUser']);
 Route::get('/barang/{id}', [BarangController::class, 'show']);
 Route::post('/barang', [BarangController::class, 'store']);
 Route::put('/barang/{id}', [BarangController::class, 'update']);
@@ -37,3 +38,10 @@ Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
 
 //Route API Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
+
+//Route API Buku
+Route::get('/buku', [BukuController::class, 'index']);
+Route::get('/buku/{id}', [BukuController::class, 'show']);
+Route::put('/buku/{id}', [BukuController::class, 'update']);
+Route::post('/buku', [BukuController::class, 'store']);
+Route::delete('/buku/{id}', [BukuController::class, 'destroy']);
