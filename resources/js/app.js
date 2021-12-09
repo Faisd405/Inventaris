@@ -86,14 +86,14 @@ const routes = [
         component: CreateBarang
     },
     {
+        name: 'scanqr-barang',
+        path: '/barang/scanqr',
+        component: ScanQrBarang
+    },
+    {
         name: 'edit-barang',
         path: '/barang/:id/edit',
         component: EditBarang
-    },
-    {
-        name: 'scanqr-barang',
-        path: '/users/scanqr',
-        component: ScanQrBarang
     },
     {
         name: 'detail-barang',
