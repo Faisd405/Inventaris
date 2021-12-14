@@ -12,61 +12,22 @@
               >TAMBAH Data buku</router-link
             >
             <div class="table-responsive mt-2">
-              <table
-                class="table table-bordered"
-                id="dataTable"
-                width="100%"
-                cellspacing="0"
-              >
-                <thead>
-                  <tr>
-                    <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Penerbit</th>
-                    <th>Tanggal</th>
-                    <th>Kondisi</th>
-                    <th>Jumlah</th>
-                    <th>Lokasi</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Penerbit</th>
-                    <th>Tanggal</th>
-                    <th>Kondisi</th>
-                    <th>Jumlah</th>
-                    <th>Lokasi</th>
-                    <th>Aksi</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-                  <tr v-for="buku in buku" :key="buku.id">
-                    <td>{{buku.judul}}</td>
-                    <td>{{buku.penulis}}</td>
-                    <td>{{buku.penerbit}}</td>
-                    <td>{{buku.tanggal}}</td>
-                    <td>{{buku.kondisi}}</td>
-                    <td>{{buku.jumlah}}</td>
-                    <td>{{buku.lokasi}}</td>
-                    <td>
+              <b-table :items="buku" :fields="fields">
+                  <template #cell(action)="data">
+
                       <router-link
-                        :to="{ name: 'edit-buku', params: { id: buku.id } }"
+                        :to="{ name: 'edit-buku', params: { id: data.item.id } }"
                         class="btn btn-sm btn-primary"
                         >Edit</router-link
                       >
                       <button
                         class="btn btn-sm btn-danger"
-                        @click="destroy(buku.id)"
+                        @click="destroy(data.item.id)"
                       >
                         Hapus
                       </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                  </template>
+              </b-table>
             </div>
           </div>
         </div>
@@ -80,6 +41,17 @@
 export default {
   data() {
     return {
+      fields: [
+        { key: "id", label: "Id" },
+        { key: "judul", label: "Judul" },
+        { key: "penulis", label: "Penulis" },
+        { key: "penerbit", label: "Penerbit" },
+        { key: "tanggal", label: "Tanggal" },
+        { key: "kondisi", label: "Kondisi" },
+        { key: "jumlah", label: "Jumlah" },
+        { key: "lokasi", label: "Lokasi" },
+        { key: "action", label: "Action", sortable: false }
+      ],
       buku: [],
     };
   },

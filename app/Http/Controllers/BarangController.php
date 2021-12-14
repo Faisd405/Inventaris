@@ -112,4 +112,10 @@ class BarangController extends Controller
         $pdf = PDF::loadView('barang.barang_pdf', compact('barang'));
         return $pdf->stream('barang.pdf');
     }
+    public function qrbarang_pdf()
+    {
+        $barang = barang::with('user', 'kategori')->get();
+        $pdf = PDF::loadView('barang.qrbarang_pdf', compact('barang'));
+        return $pdf->stream('barang.pdf');
+    }
 }

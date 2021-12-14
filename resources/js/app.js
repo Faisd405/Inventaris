@@ -2,6 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
@@ -13,6 +14,15 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
 import App from './App.vue';
 
 library.add(faUserSecret)
@@ -37,12 +47,15 @@ import IndexBarang from './components/Barang/Index.vue';
 import CreateBarang from './components/Barang/Create.vue';
 import EditBarang from './components/Barang/Edit.vue';
 import DetailBarang from './components/Barang/Detail.vue';
-import ScanQrBarang from './components/Barang/ScanQr.vue';
 
 //Component Buku (Data Buku)
 import IndexBuku from './components/Buku/Index.vue';
 import CreateBuku from './components/Buku/Create.vue';
 import EditBuku from './components/Buku/Edit.vue';
+
+//Component Login dan Register
+import Login from './components/Auth/Login.vue';
+import Register from './components/Auth/Register.vue';
 
 // Routes Untuk Component User
 const routes = [
@@ -86,11 +99,6 @@ const routes = [
         component: CreateBarang
     },
     {
-        name: 'scanqr-barang',
-        path: '/barang/scanqr',
-        component: ScanQrBarang
-    },
-    {
         name: 'edit-barang',
         path: '/barang/:id/edit',
         component: EditBarang
@@ -116,6 +124,17 @@ const routes = [
         path: '/buku/:id/edit',
         component: EditBuku
     },
+    //Route Untuk Login dan Register
+    {
+        name: 'login',
+        path: '/login',
+        component: Login
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: Register
+    }
 ]
 
 const router = new VueRouter({

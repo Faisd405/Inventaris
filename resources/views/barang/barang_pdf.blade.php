@@ -9,21 +9,28 @@
 <table class='table table-bordered'>
     <thead class="thead-dark">
         <tr>
+            {{-- 'nama_barang', 'kode_barang', 'detail_barang', 'kategori_id', 'fungsi', 'harga_barang', 'lokasi', 'user_id','image' --}}
             <th scope="col">Nama Barang</th>
+            <th scope="col">Kode Barang</th>
+            <th scope="col">Detail Barang</th>
             <th scope="col">Kategori</th>
+            <th scope="col">Fungsi</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Lokasi</th>
             <th scope="col">User</th>
-            <th scope="row">Lokasi</th>
-            <th scope="col">QR</th>
         </tr>
     </thead>
     <tbody>
         @foreach($barang as $b)
         <tr>
             <td class="mb-3">{{$b->nama_barang}}</td>
+            <td class="mb-3">{{$b->kode_barang}}</td>
+            <td class="mb-3">{{$b->detail_barang}}</td>
             <td class="mb-3">{{$b->kategori->nama_kategori}}</td>
+            <td class="mb-3">{{$b->fungsi}}</td>
+            <td class="mb-3">{{$b->harga_barang}}</td>
             <td class="mb-3">{{$b->lokasi}}</td>
             <td class="mb-3">{{$b->user->name}}</td>
-            <td class="mb-3">{!! DNS2D::getBarcodeHTML("$b->kode_barang", 'QRCODE') !!}</td>
         </tr>
         @endforeach
     </tbody>

@@ -76,8 +76,7 @@ export default {
         axios
             .put(uri, this.barang)
             .then((response) => {
-                toastr.success("Data Berhasil Diubah");
-                this.$router.push("/barang");
+                this.$router.push("/users/"+this.barang.user_id);
             })
             .catch((error) => {
                 console.log(error);

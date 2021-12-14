@@ -14,6 +14,7 @@ use App\Http\Controllers\BarangController;
 |
 */
 Route::get('/barang/barang_pdf', [BarangController::class, 'barang_pdf'])->name('barang.barang_pdf');
+Route::get('/barang/qrbarang_pdf', [BarangController::class, 'qrbarang_pdf'])->name('barang.qrbarang_pdf');
 Route::get('/{any}', function () {
     return view('app');
 })->where('any','.*');
