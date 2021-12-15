@@ -6,7 +6,7 @@
           <div class="card-header">Barang</div>
 
           <div class="card-body">
-              <router-link
+            <router-link
               :to="{ name: 'create-barang' }"
               class="btn btn-md btn-primary"
               >TAMBAH Data Barang</router-link
@@ -90,7 +90,8 @@
                       params: { id: data.item.id },
                     }"
                     class="btn btn-sm btn-primary"
-                    >Edit</router-link>
+                    >Edit</router-link
+                  >
                 </template>
               </b-table>
             </div>
@@ -108,7 +109,7 @@ export default {
     return {
       fields: [
         { key: "id", sortable: true },
-        { key: "nama_barang", sortable: true, filterByFormatted: true},
+        { key: "nama_barang", sortable: true, filterByFormatted: true },
         { key: "detail_barang", sortable: true },
         { key: "kategori", sortable: true },
         { key: "fungsi", sortable: true },
@@ -116,11 +117,11 @@ export default {
         { key: "lokasi", sortable: true },
         { key: "show_details", label: "Detail" },
       ],
-        filter: null,
-        filterOn: [],
-        currentPage: 1,
-        perPage: 5,
-        pageOptions: [5, 15, 25, 50,{ value: 100, text: "Show a lot" }],
+      filter: null,
+      filterOn: [],
+      currentPage: 1,
+      perPage: 5,
+      pageOptions: [5, 15, 25, 50, { value: 100, text: "Show a lot" }],
       barang: [],
       sortBy: "id",
     };
@@ -141,8 +142,8 @@ export default {
   },
   methods: {
     onFiltered(filteredItems) {
-        this.totalRows = filteredItems.length
-        this.currentPage = 1
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
     },
   },
 };

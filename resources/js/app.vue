@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <router-link :to="{ name: '#' }" class="navbar-brand"
+      <router-link to="/" class="navbar-brand"
         >Inventaris Barang</router-link
       >
       <button
