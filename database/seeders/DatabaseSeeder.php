@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         // Seeder Kategori
         kategori::create([
             'nama_kategori' => 'PC',
-            'jumlah' => '1',
+            'jumlah' => '2',
             'fungsi' => 'Mengoding',
             'sifat_id' => '1',
         ]);

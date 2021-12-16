@@ -60,19 +60,29 @@ class BarangController extends Controller
         $barang->harga_barang = $request->harga_barang;
         $barang->lokasi = $request->lokasi;
         $barang->user_id = $request->user_id;
+
+        $kategori = kategori::find($request->kategori_id);
+        $kategori->jumlah = $kategori->jumlah + 1;
+
         $barang->save();
+        $kategori->update();
 
         return response()->json([
             'success' => true,
             'message' => 'barang Berhasil Ditambahkan!',
-            'barang'    => $barang
+            'barang'    => $barang,
+            'kategori'    => $kategori
         ], 200);
     }
 
     public function destroy($id)
     {
         $barang = barang::find($id);
+        $kategori = kategori::find($barang->kategori_id);
+        $kategori->jumlah = $kategori->jumlah - 1;
+        $kategori->update();
         File::delete('images/' . $barang->image);
+
         $barang->delete();
         return response()->json([
             'success' => true,

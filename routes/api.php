@@ -38,6 +38,7 @@ Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
 
 //Route API Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/namakategori', [KategoriController::class, 'indexnama']);
 
 //Route API Buku
 Route::get('/buku', [BukuController::class, 'index']);

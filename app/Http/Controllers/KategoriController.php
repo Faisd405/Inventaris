@@ -18,4 +18,14 @@ class KategoriController extends Controller
         ], 200);
     }
 
+    public function indexnama(){
+        $namakategori = kategori::pluck('nama_kategori');
+        $jumlah = kategori::pluck('jumlah');
+        return response([
+            'success' => true,
+            'message' => 'List Semua kategori',
+            'kategori' => $namakategori,
+            'jumlah' => $jumlah,
+        ], 200);
+    }
 }

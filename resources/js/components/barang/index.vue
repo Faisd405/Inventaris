@@ -92,6 +92,12 @@
                     class="btn btn-sm btn-primary"
                     >Edit</router-link
                   >
+                  <button
+                    class="btn btn-sm btn-danger"
+                    @click="destroy(data.item.id)"
+                  >
+                    Hapus
+                  </button>
                 </template>
               </b-table>
             </div>
@@ -115,6 +121,7 @@ export default {
         { key: "fungsi", sortable: true },
         { key: "harga_barang", sortable: true },
         { key: "lokasi", sortable: true },
+        { key: "user.name", label: "Pemakai", sortable: true },
         { key: "show_details", label: "Detail" },
       ],
       filter: null,
@@ -144,6 +151,16 @@ export default {
     onFiltered(filteredItems) {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
+    },
+    destroy(id) {
+      this.axios
+        .delete(`/api/barang/${id}`)
+        .then((response) => {
+          this.barang = this.barang.filter((barang) => barang.id != id);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

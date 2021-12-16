@@ -2,7 +2,6 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
@@ -36,6 +35,7 @@ Vue.use(VueAxios, axios,IconsPlugin,BootstrapVue, FontAwesomeIcon);
 
 // Home
 import Home from './components/Home.vue';
+import BarChart from './components/Chart/BarChart.vue';
 // Component User (Data Pengguna)
 import IndexUsers from './components/Users/Index.vue';
 import DetailUsers from './components/Users/Detail.vue';
@@ -56,6 +56,7 @@ import EditBuku from './components/Buku/Edit.vue';
 //Component Login dan Register
 import Login from './components/Auth/Login.vue';
 import Register from './components/Auth/Register.vue';
+import Vue from 'vue';
 
 // Routes Untuk Component User
 const routes = [
@@ -65,7 +66,11 @@ const routes = [
         path: '/',
         component: Home
     },
-
+    {
+        name: 'barchart',
+        path: '/barchart',
+        component: BarChart
+    },
     // Route Untuk Users
     {
         name: 'index-users',
@@ -134,7 +139,7 @@ const routes = [
         name: 'register',
         path: '/register',
         component: Register
-    }
+    },
 ]
 
 const router = new VueRouter({
