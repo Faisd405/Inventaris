@@ -53,6 +53,15 @@ import IndexBuku from './components/Buku/Index.vue';
 import CreateBuku from './components/Buku/Create.vue';
 import EditBuku from './components/Buku/Edit.vue';
 
+//Component Kategori (Data Kategori)
+import IndexKategori from './components/Kategori/Index.vue';
+import CreateKategori from './components/Kategori/Create.vue';
+import EditKategori from './components/Kategori/Edit.vue';
+import DetailKategori from './components/Kategori/Detail.vue';
+
+//Component Jenis Sifat (Data Jenis Sifat)
+import IndexSifat from './components/jenis/Index.vue';
+
 //Component Login dan Register
 import Login from './components/Auth/Login.vue';
 import Register from './components/Auth/Register.vue';
@@ -128,6 +137,33 @@ const routes = [
         name: 'edit-buku',
         path: '/buku/:id/edit',
         component: EditBuku
+    },
+    // Route Untuk Kategori
+    {
+        name: 'index-kategori',
+        path: '/kategori',
+        component: IndexKategori
+    },
+    {
+        name: 'create-kategori',
+        path: '/kategori/create',
+        component: CreateKategori
+    },
+    {
+        name: 'edit-kategori',
+        path: '/kategori/:id/edit',
+        component: EditKategori
+    },
+    {
+        name: 'detail-kategori',
+        path: '/kategori/:id',
+        component: DetailKategori
+    },
+    // Route Untuk Jenis Sifat
+    {
+        name: 'index-sifat',
+        path: '/sifat',
+        component: IndexSifat
     },
     //Route Untuk Login dan Register
     {

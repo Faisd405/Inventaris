@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card card-default">
-          <div class="card-header">Create Buku</div>
+          <div class="card-header">Edit Buku</div>
 
           <div class="card-body">
             <form @submit.prevent="BookStore">

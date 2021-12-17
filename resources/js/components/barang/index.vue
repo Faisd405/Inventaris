@@ -11,6 +11,11 @@
               class="btn btn-md btn-primary"
               >TAMBAH Data Barang</router-link
             >
+            <router-link
+              :to="{ name: 'index-kategori' }"
+              class="btn btn-md btn-primary"
+              >Index Kategori</router-link
+            >
             <div>
               <b-row>
                 <b-col lg="6" class="my-1">
